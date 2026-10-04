@@ -87,11 +87,10 @@
         <fqname>ISecureElement/SIM1</fqname>
         <fqname>ISecureElement/SIM2</fqname>
     </hal>
-    <hal format="aidl">
-        <name>android.hardware.security.keymint</name>
-        <version>3</version>
-        <fqname>IRemotelyProvisionedComponent/strongbox</fqname>
-    </hal>
+    <!-- IRemotelyProvisionedComponent/strongbox not declared: this ROM sets
+         ro.product.first_api_level=32, and the citadel KeyMint HAL then registers only
+         IKeyMintDevice/strongbox. Declaring it made servicemanager retry the lazy start
+         ~2 times a second forever (rkpd, system_server, keystore). -->
     <hal format="aidl">
         <name>com.google.input</name>
         <version>8</version>
