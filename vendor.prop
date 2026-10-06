@@ -16,7 +16,12 @@ vendor.audio_hal.aidl.enable=true
 vendor.battery_mitigation.aidl.enable=true
 
 # Bluetooth
-persist.bluetooth.a2dp_offload.disabled=false
+# A2DP hardware offload off by default: the offload path only takes SBC/AAC/Opus, and LDAC on the
+# software path had no audio while the audio HAL still routed it to the offload device. Same as
+# Developer options > Disable Bluetooth A2DP hardware offload (which also turns LE audio offload
+# off); it can be turned back on there.
+persist.bluetooth.a2dp_offload.disabled=true
+persist.bluetooth.leaudio_offload.disabled=true
 ro.bluetooth.a2dp_offload.supported=true
 
 # Camera
